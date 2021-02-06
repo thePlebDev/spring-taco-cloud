@@ -25,9 +25,9 @@ import tacos.Ingredient.Type;
 @RequestMapping("/design")
 public class DesignTacoController {
 	
-	@GetMapping
+	@GetMapping //specifies this will handle a get request to the design end-point 
 	public String showDesign(Model model) {
-		List<Ingredient> ingredients = Arrays.asList( //need to look up Lists
+		List<Ingredient> ingredients = Arrays.asList( //creates an list of Ingredient objects
 				new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
 				 new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
 				 new Ingredient("GRBF", "Ground Beef", Type.PROTEIN),
@@ -40,11 +40,16 @@ public class DesignTacoController {
 				 new Ingredient("SRCR", "Sour Cream", Type.SAUCE)
 				);
 				Type[] types = Ingredient.Type.values(); // look up the class again
-				for (Type type : types) {
-					model.addAttribute(type.toString().toLowerCase(),filterByType(ingredients,type));
-				}
-				model.addAttribute("design", new Taco()); //fix this 
+			
 				return "design";
+	}
+	
+	@PostMapping //this means that any post requests made to /design are handled here
+	public String processDesign(Design design) {
+		//save the taco name. This will be don later
+		log.info("processing design: " + design);
+		
+		return "redirect:/orders/current";
 	}
 
 }
