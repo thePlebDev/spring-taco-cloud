@@ -24,6 +24,7 @@ public class OrderController {
 	@PostMapping
 	public String processOrder(Order order) {
 		log.info("Order submitted: " + order);
+		System.out.println("order -->" + order);
 		return "redirect:/";
 	}
 	

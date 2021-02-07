@@ -27,9 +27,8 @@ public class DesignTacoController {
 	
 	@GetMapping //specifies this will handle a get request to the design end-point 
 	public String showDesign(Model model) {
-		model.addAttribute("design",new Taco());
-		 // exposes a Taco to the view template
-				return "design"; //the name a the view that is used to render
+		model.addAttribute("design",new Taco()); // exposes taco to view with design key
+				return "design"; 
 	}
 	
 	@PostMapping //this means that any post requests made to /design are handled here
@@ -37,6 +36,7 @@ public class DesignTacoController {
 		//the fields of the form should be bound to the taco object
 		//save the taco name. This will be done in chapter 3
 		log.info("processing design: " + design);
+		System.out.println("design --> " + design.about());
 		
 		return "redirect:/orders/current"; // should redirect to this path 
 	}
