@@ -5,10 +5,10 @@
  <title>Taco Cloud</title>
  </head>
  <body>
- <h1>TACO NAMES</h1>
+ <h1 >TACO NAMES</h1>
  
- <h3>name your taco</h3>
- <form method="POST">
+ <h3 > name your taco</h3>
+ <form method="POST" th:action="@{/design}" th:object"${design}" >
  <input type="text" />
  <br/>
  <button type="submit">Submit your taco</button>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org">
+ <head>
+ <title>Taco Cloud</title>
+ </head>
+ <body>
+ <h1>This should be the redirect</h1>
+ 
+ <h3>name your taco</h3>
+ <form method="POST" th:action="@{/orders}" th:object="${order}">
+	 <h3>Deliver my taco masterpieces to...</h3>
+	 <label for="name">Name: </label>
+	 <input type="text" th:field="*{name}"/>
+	 <br/>
+	 <input type="submit" value="Submit order"/>
+ </form>
+
+ </body>
+</html>
